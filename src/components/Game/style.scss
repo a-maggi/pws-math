@@ -196,3 +196,45 @@
     color: #b6b1ff;
   }
 }
+
+
+
+
+/* Scoring */
+
+.screen-scoring {
+  overflow: hidden;
+  display: block;
+  position: relative;
+  min-height: 451px;
+  padding-top: 20%;
+  .text{
+    font-size: 32px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    text-shadow: 1px 1px 1px #000;
+  }
+
+  .message-scoring{
+    position: relative;
+    z-index: 2;
+  }
+  
+  img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 0;
+    opacity: .5;
+    max-width: 600px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  button {
+    position: relative;
+    z-index: 0;
+    margin: 70px auto;
+  }
+}

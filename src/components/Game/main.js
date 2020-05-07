@@ -7,6 +7,7 @@ import StepGame from './steps/stepGame';
 import StepScoring from './steps/stepScoring';
 
 import CompleteEquation from './games/completeEquation';
+import CountFast from './games/countFast';
 
 
 import WelcomeBar from "components/WelcomeBar";
@@ -26,8 +27,10 @@ export default () => {
         return <StepGame />
       case 6:
         return <CompleteEquation />
+      case 7:
+        return <CountFast />
       case 99:
-          return <StepScoring />
+        return <StepScoring />
       default:
         return <StepNickname />
     }

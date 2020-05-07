@@ -5,7 +5,7 @@ import Link from "components/Link";
 
 export default () => {
 
-  
+
   const { step, setStep } = useStep(); // Our data and methods
 
   const nextStep = (e, step) => {
@@ -37,10 +37,10 @@ export default () => {
             <div className="summary">Selecciona distintas tarjetas, siguiendo un orden numerico para ganar.</div>
           </div>
           <div className="btn-play">
-            <Link route="/count-fast" className="btn-next">
+            <button onClick={e => nextStep(e, 7)} className="btn-next">
               <svg fill="#9292ff" width="12px" height="12px" viewBox="0 0 163.861 163.861"><g><path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"></path></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
               <span>Jugar</span>
-            </Link>
+            </button>
           </div>
         </div>
         <div className="game-item penguin">

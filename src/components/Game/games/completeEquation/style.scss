@@ -1,23 +1,23 @@
 #question {
   font-size: 24px;
-    background: #423cd0;
-    border-radius: 30px;
-    margin: 1rem 2rem 2rem 2rem;
-    box-shadow: inset 0px 1px 5px #3a3798;
+  background: #423cd0;
+  border-radius: 30px;
+  margin: 1rem 2rem 2rem 2rem;
+  box-shadow: inset 0px 1px 5px #3a3798;
 }
 #equation {
   text-align: center;
-    margin-top: auto;
-    margin-bottom: auto;
-    display: block;
-    font-weight: 700;
-    font-size: 42px;
-    color: #bebde7;
+  margin-top: auto;
+  margin-bottom: auto;
+  display: block;
+  font-weight: 700;
+  font-size: 42px;
+  color: #bebde7;
 }
 
-.cards-answer{
+.cards-answer {
   display: flex;
-
+  flex-wrap: wrap;
 }
 
 .number-card {
@@ -27,8 +27,13 @@
   background-color: #534df1;
   margin-left: 1rem;
   margin-right: 1rem;
-  flex: 1;
+  flex: 1 0 21%;
+  margin-bottom: 1em;
   overflow: hidden;
+
+  &.completed {
+    background-color: #3fe842;
+  }
 }
 
 .number-card:hover {
@@ -93,76 +98,75 @@ $spCol: #000;
 
 /* Spinner Slices */
 .sp.sp-slices {
-	border-radius: 50%;
-	border-top: 16px rgba($spCol,0.75) solid;
-	border-left: 16px rgba($spCol,0.25) solid;
-	border-bottom: 16px rgba($spCol,0.25) solid;
-	border-right: 16px rgba($spCol,0.25) solid;
-	-webkit-animation: spSlices 1s infinite linear;
-	animation: spSlices 1s infinite linear;
+  border-radius: 50%;
+  border-top: 16px rgba($spCol, 0.75) solid;
+  border-left: 16px rgba($spCol, 0.25) solid;
+  border-bottom: 16px rgba($spCol, 0.25) solid;
+  border-right: 16px rgba($spCol, 0.25) solid;
+  -webkit-animation: spSlices 1s infinite linear;
+  animation: spSlices 1s infinite linear;
 }
 @-webkit-keyframes spSlices {
-	0% {
-		border-top: 16px rgba($spCol,0.75) solid;
-		border-right: 16px rgba($spCol,0.25) solid;
-		border-bottom: 16px rgba($spCol,0.25) solid;
-		border-left: 16px rgba($spCol,0.25) solid;
-	}
-	25% {
-		border-top: 16px rgba($spCol,0.25) solid;
-		border-right: 16px rgba($spCol,0.75) solid;
-		border-bottom: 16px rgba($spCol,0.25) solid;
-		border-left: 16px rgba($spCol,0.25) solid;
-	}
-	50% {
-		border-top: 16px rgba($spCol,0.25) solid;
-		border-right: 16px rgba($spCol,0.25) solid;
-		border-bottom: 16px rgba($spCol,0.75) solid;
-		border-left: 16px rgba($spCol,0.25) solid;
-	}
-	75% {
-		border-top: 16px rgba($spCol,0.25) solid;
-		border-right: 16px rgba($spCol,0.25) solid;
-		border-bottom: 16px rgba($spCol,0.25) solid;
-		border-left: 16px rgba($spCol,0.75) solid;
-	}
-	100% {
-		border-top: 16px rgba($spCol,0.75) solid;
-		border-right: 16px rgba($spCol,0.25) solid;
-		border-bottom: 16px rgba($spCol,0.25) solid;
-		border-left: 16px rgba($spCol,0.25) solid;
-	}
+  0% {
+    border-top: 16px rgba($spCol, 0.75) solid;
+    border-right: 16px rgba($spCol, 0.25) solid;
+    border-bottom: 16px rgba($spCol, 0.25) solid;
+    border-left: 16px rgba($spCol, 0.25) solid;
+  }
+  25% {
+    border-top: 16px rgba($spCol, 0.25) solid;
+    border-right: 16px rgba($spCol, 0.75) solid;
+    border-bottom: 16px rgba($spCol, 0.25) solid;
+    border-left: 16px rgba($spCol, 0.25) solid;
+  }
+  50% {
+    border-top: 16px rgba($spCol, 0.25) solid;
+    border-right: 16px rgba($spCol, 0.25) solid;
+    border-bottom: 16px rgba($spCol, 0.75) solid;
+    border-left: 16px rgba($spCol, 0.25) solid;
+  }
+  75% {
+    border-top: 16px rgba($spCol, 0.25) solid;
+    border-right: 16px rgba($spCol, 0.25) solid;
+    border-bottom: 16px rgba($spCol, 0.25) solid;
+    border-left: 16px rgba($spCol, 0.75) solid;
+  }
+  100% {
+    border-top: 16px rgba($spCol, 0.75) solid;
+    border-right: 16px rgba($spCol, 0.25) solid;
+    border-bottom: 16px rgba($spCol, 0.25) solid;
+    border-left: 16px rgba($spCol, 0.25) solid;
+  }
 }
 @keyframes spSlices {
-	0% {
-		border-top: 16px rgba($spCol,0.75) solid;
-		border-right: 16px rgba($spCol,0.25) solid;
-		border-bottom: 16px rgba($spCol,0.25) solid;
-		border-left: 16px rgba($spCol,0.25) solid;
-	}
-	25% {
-		border-top: 16px rgba($spCol,0.25) solid;
-		border-right: 16px rgba($spCol,0.75) solid;
-		border-bottom: 16px rgba($spCol,0.25) solid;
-		border-left: 16px rgba($spCol,0.25) solid;
-	}
-	50% {
-		border-top: 16px rgba($spCol,0.25) solid;
-		border-right: 16px rgba($spCol,0.25) solid;
-		border-bottom: 16px rgba($spCol,0.75) solid;
-		border-left: 16px rgba($spCol,0.25) solid;
-	}
-	75% {
-		border-top: 16px rgba($spCol,0.25) solid;
-		border-right: 16px rgba($spCol,0.25) solid;
-		border-bottom: 16px rgba($spCol,0.25) solid;
-		border-left: 16px rgba($spCol,0.75) solid;
-	}
-	100% {
-		border-top: 16px rgba($spCol,0.75) solid;
-		border-right: 16px rgba($spCol,0.25) solid;
-		border-bottom: 16px rgba($spCol,0.25) solid;
-		border-left: 16px rgba($spCol,0.25) solid;
-	}
+  0% {
+    border-top: 16px rgba($spCol, 0.75) solid;
+    border-right: 16px rgba($spCol, 0.25) solid;
+    border-bottom: 16px rgba($spCol, 0.25) solid;
+    border-left: 16px rgba($spCol, 0.25) solid;
+  }
+  25% {
+    border-top: 16px rgba($spCol, 0.25) solid;
+    border-right: 16px rgba($spCol, 0.75) solid;
+    border-bottom: 16px rgba($spCol, 0.25) solid;
+    border-left: 16px rgba($spCol, 0.25) solid;
+  }
+  50% {
+    border-top: 16px rgba($spCol, 0.25) solid;
+    border-right: 16px rgba($spCol, 0.25) solid;
+    border-bottom: 16px rgba($spCol, 0.75) solid;
+    border-left: 16px rgba($spCol, 0.25) solid;
+  }
+  75% {
+    border-top: 16px rgba($spCol, 0.25) solid;
+    border-right: 16px rgba($spCol, 0.25) solid;
+    border-bottom: 16px rgba($spCol, 0.25) solid;
+    border-left: 16px rgba($spCol, 0.75) solid;
+  }
+  100% {
+    border-top: 16px rgba($spCol, 0.75) solid;
+    border-right: 16px rgba($spCol, 0.25) solid;
+    border-bottom: 16px rgba($spCol, 0.25) solid;
+    border-left: 16px rgba($spCol, 0.25) solid;
+  }
 }
-

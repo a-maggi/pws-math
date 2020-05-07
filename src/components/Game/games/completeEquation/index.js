@@ -65,18 +65,20 @@ export default () => {
   
   
   useEffect(() => {
+    if( question  > 10 ) setStep(99) // Voy a scoring
+  }, [question]);
+
+  
+  useEffect(() => {
     setTimeout(() => {
       setIsLoading(false)
     }, 3000)
   }, []);
 
 
-
   let defineScore = (score) => {
     let newScore = (score + scoring >= 0) ? score + scoring : 0;
     setScoring(newScore);
-
-    if( scoring  > 10 ) setStep(99) // Voy a scoring
   }
 
   let randomNumber = () => {
@@ -114,10 +116,6 @@ export default () => {
     return false;
   }
 
-  console.log("used: " + used)
-  console.log("randQuestion: " + randQuestion)
-  console.log("possAns[randQuestion]: " + possAns[randQuestion])
-
   if (isLoading) return <ScreenLoading/>
 
   if (question <= 10) {
@@ -148,5 +146,7 @@ export default () => {
       </section>
     )
   }
+
+  return null;
 
 }
