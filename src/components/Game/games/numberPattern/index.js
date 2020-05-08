@@ -106,7 +106,7 @@ export default () => {
           <div id="question">
             <p id="equation">{sequences[randQuestion]}</p>
           </div>
-          <div className="subtext">Completa la ecuación, seleccionando una card</div>
+          <div className="subtext">Completa el patrón de números, seleccionando una card</div>
           <div className="cards-answer">
 
             {!isNaN(randQuestion) && possAns[randQuestion] && possAns[randQuestion].map((item) => (
