@@ -21,7 +21,8 @@ const useUserData = () => {
   // Now we return only the relevant part of the state for the component and the method to update it
   return {
     nickname: state.nickname,
-    updateNickname
+    updateNickname,
+    updateLevel
   };
 };
 

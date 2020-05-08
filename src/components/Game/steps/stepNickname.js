@@ -6,7 +6,7 @@ import useStep from '../hooks/useStep';
 export default () => {
 
   const { nickname, avatar, setNickname, setAvatar } = useUserData(); // Our data and methods
-  const { step, setStep } = useStep(); // Our data and methods
+  const { setStep } = useStep(); // Our data and methods
   const [error, updateError] = useState(false);
 
   let avatares = [
@@ -54,7 +54,7 @@ export default () => {
   const setGreetings = () => (
     <div>
       <div className="text">Genial {nickname}! <br /> <small>Este sera tu avatar a partir de ahora.</small></div>
-      <img className="avatar" src={avatar}></img>
+      <img alt="avatar" className="avatar" src={avatar}></img>
     </div>
   );
 

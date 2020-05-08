@@ -22,7 +22,7 @@ export default () => {
     <section>
       <div className="text">Con que dificultad te gustaria jugar?</div>
       <div className="options row align-items-center">
-        <div className={`col item ${level == 1 ? "active" : null}`} onClick={e => handleAction(e, 1)}>
+        <div className={`col item ${level == "Principiante" ? "active" : null}`} onClick={e => handleAction(e, "Principiante" )}>
           <div className="top">
             <img src="/static/img/principiante.png"></img>
           </div>
@@ -30,7 +30,7 @@ export default () => {
             <h3>Principiante</h3>
           </div>
         </div>
-        <div className={`col item ${level == 2 ? "active" : null}`} onClick={e => handleAction(e, 2)}>
+        <div className={`col item ${level == "Intermedio" ? "active" : null}`} onClick={e => handleAction(e, "Intermedio")}>
           <div className="top">
             <img src="/static/img/intermedio.png"></img>
           </div>
@@ -38,7 +38,7 @@ export default () => {
             <h3>Intermedio</h3>
           </div>
         </div>
-        <div className={`col item ${level == 3 ? "active" : null}`} onClick={e => handleAction(e, 3)}>
+        <div className={`col item ${level == "Experto" ? "active" : null}`} onClick={e => handleAction(e, "Experto")}>
           <div className="top">
             <img src="/static/img/experto.png"></img>
           </div>

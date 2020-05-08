@@ -1,17 +1,13 @@
-import React, { Fragment, useState, useEffect, useContext } from "react";
-import classNames from 'classnames';
-import Context from './Context'
+import React, { Fragment, useState } from "react";
 
 const NumberCard = ({ number, lowest, score, action, isClicked, setIsClicked }) => {
-  console.log("lowest es " +lowest)
-  console.log("number es " +number  )
   const [cardStyle, setCardStyle] = useState();
 
   function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  const setStatusCard = async (possAns) => {
+  const setStatusCard = async () => {
     if (isClicked) return false;
     setIsClicked(true);
     if (number !== lowest){

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'components/Link';
 
 const HomePage = () => {
@@ -7,15 +7,15 @@ const HomePage = () => {
     <section>
       <header>
         <div className="logo">
-          <img width="160" src="static/img/logo.png"></img>
+          <img alt="logo" width="160" src="static/img/logo.png"></img>
         </div>
       </header>
       <main>
         <div className="awesome-component">
           <div className="container">
             <div className="big-text">
-              <div class="header-bg"></div>
-              <div class="header-blend">
+              <div className="header-bg"></div>
+              <div className="header-blend">
                 <h2>Vive una <br /> Aventura</h2>
               </div>
             </div>
@@ -27,20 +27,20 @@ const HomePage = () => {
         </div>
         <div className="super-images">
           <div className="line">
-            <figure><img src="https://www.papumba.com/assets/img/reel/14.png"></img></figure>
-            <figure><img src="https://www.papumba.com/assets/img/reel/5.png"></img></figure>
-            <figure><img src="https://www.papumba.com/assets/img/reel/4.png"></img></figure>
-            <figure><img src="https://www.papumba.com/assets/img/reel/2.png"></img></figure>
-            <figure><img src="https://www.papumba.com/assets/img/reel/11.png"></img></figure>
-            <figure><img src="https://www.papumba.com/assets/img/reel/7.png"></img></figure>
+            <figure><img alt="juego para niños" src="/static/img/snaps/14.png"></img></figure>
+            <figure><img alt="juego para niños" src="/static/img/snaps/5.png"></img></figure>
+            <figure><img alt="juego para niños" src="/static/img/snaps/4.png"></img></figure>
+            <figure><img alt="juego para niños" src="/static/img/snaps/2.png"></img></figure>
+            <figure><img alt="juego para niños" src="/static/img/snaps/11.png"></img></figure>
+            <figure><img alt="juego para niños" src="/static/img/snaps/7.png"></img></figure>
           </div>
           <div className="line">
-            <figure><img src="https://www.papumba.com/assets/img/reel/6.png"></img></figure>
-            <figure><img src="https://www.papumba.com/assets/img/reel/10.png"></img></figure>
-            <figure><img src="https://www.papumba.com/assets/img/reel/9.png"></img></figure>
-            <figure><img src="https://www.papumba.com/assets/img/reel/8.png"></img></figure>
-            <figure><img src="https://www.papumba.com/assets/img/reel/13.png"></img></figure>
-            <figure><img src="https://www.papumba.com/assets/img/reel/3.png"></img></figure>
+            <figure><img alt="juego para niños" src="/static/img/snaps/6.png"></img></figure>
+            <figure><img alt="juego para niños" src="/static/img/snaps/10.png"></img></figure>
+            <figure><img alt="juego para niños" src="/static/img/snaps/9.png"></img></figure>
+            <figure><img alt="juego para niños" src="/static/img/snaps/8.png"></img></figure>
+            <figure><img alt="juego para niños" src="/static/img/snaps/13.png"></img></figure>
+            <figure><img alt="juego para niños" src="/static/img/snaps/3.png"></img></figure>
           </div>
         </div>
       </main>
@@ -64,7 +64,7 @@ const HomePage = () => {
           left: -30px;
           right: -30px;
           bottom: -30px;
-          background-image: url(https://www.papumba.com/assets/img/subsbox/1.jpg);
+          background-image: url(/static/img/snaps/1.jpg);
           -webkit-background-size: cover;
           -moz-background-size: cover;
           background-size: cover;

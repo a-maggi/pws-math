@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
-import { CardContent, Button } from "@material-ui/core";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
+import { makeStyles } from "@material-ui/core/styles";
+import { CardContent } from "@material-ui/core";
 import TableWithPagination from "./TableWithPagination";
 import PodiumCard from "./PodiumCard";
 import ButtonCard from "./ButtonCard";
@@ -17,17 +16,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-// const Button = withStyles(theme => ({
-//   root: {
-//     borderRadius: 12,
-//     color: "white",
-//     height: 46,
-//     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-//     fontSize: 18,
-//     fontWeight: "bold"
-//   }
-// }))(Button);
-
 const LeaderBoard = () => {
   const classes = useStyles();
 
@@ -42,16 +30,6 @@ const LeaderBoard = () => {
     {
       url: "static/img/matematica.png",
       title: "MATEMATICA",
-      width: "33%"
-    },
-    {
-      url: "/static/img/literatura.png",
-      title: "LENGUA",
-      width: "34%"
-    },
-    {
-      url: "/static/img/matYlit.png",
-      title: "TODOS",
       width: "33%"
     }
   ];
@@ -205,7 +183,7 @@ const LeaderBoard = () => {
         setRows(
           rows.filter(r => r.subject.toUpperCase() === subject.toUpperCase())
         );
-      } else if (level !== "TODOS" && subject === "TODOS") {
+      } else if (level !== "TODOS") {
         setRows(
           rows.filter(r => r.level.toUpperCase() === level.toUpperCase())
         );
@@ -228,47 +206,7 @@ const LeaderBoard = () => {
   return (
     <Fragment>
       <div className={classes.root}>
-        <ButtonCard images={subjects} setTitle={setSubject} />
         <ButtonCard images={levels} setTitle={setLevel} />
-        {/* <ButtonGroup
-          size="large"
-          aria-label="large contained primary button group"
-          variant="text"
-          className="button-group"
-        >
-          <Button onClick={() => setSubject("LENGUA")} className="button-menu">
-            LENGUA
-          </Button>
-          <Button
-            onClick={() => setSubject("MATEMATICA")}
-            className="button-menu"
-          >
-            MATEMATICA
-          </Button>
-          <Button onClick={() => setSubject("TODOS")} className="button-menu">
-            TODOS
-          </Button>
-        </ButtonGroup> */}
-
-        {/* <ButtonGroup
-          size="small"
-          aria-label="small contained secondary button group"
-          variant="text"
-          className="button-group"
-        >
-          <Button onClick={() => setLevel("FACIL")} className="button-menu">
-            FACIL
-          </Button>
-          <Button onClick={() => setLevel("MEDIO")} className="button-menu">
-            MEDIO
-          </Button>
-          <Button onClick={() => setLevel("DIFICIL")} className="button-menu">
-            DIFICIL
-          </Button>
-          <Button onClick={() => setLevel("TODOS")} className="button-menu">
-            TODOS
-          </Button>
-        </ButtonGroup> */}
       </div>
       <CardContent className="d-flex justify-content-center">
         {rowsFiltered[1] ? (
@@ -298,25 +236,6 @@ const LeaderBoard = () => {
       <TableWithPagination
         rows={rowsFiltered.slice(3, rowsFiltered.length )}
       />
-
-      <style jsx>{`
-        .button-group {
-          background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
-          border-radius: 12px;
-          color: white;
-          padding: 5px 5px 5px 5px;
-          box-shadow: 0 3px 5px 2px rgba(255, 105, 135, 0.3);
-        }
-
-        .button-menu {
-          border-radius: 12px;
-          color: white;
-          height: 46px;
-          box-shadow: 0 3px 5px 2px rgba(255, 105, 135, 0.3);
-          font-size: 18px;
-          font-weight: bold;
-        }
-      `}</style>
     </Fragment>
   );
 };

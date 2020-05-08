@@ -12,7 +12,7 @@ export default () => {
 
   return (
     <React.Fragment>
-        <img width="52px" src={avatares[Math.floor(Math.random() * avatares.length)]} />
+        <img alt="avatar" width="52px" src={avatares[Math.floor(Math.random() * avatares.length)]} />
     </React.Fragment>
   )
 }

@@ -2,7 +2,6 @@ import React from 'react'
 
 import useStep from '../hooks/useStep';
 import useUserData from '../hooks/useUserData';
-import Link from "components/Link";
 
 export default () => {
 
@@ -21,7 +20,7 @@ export default () => {
     <section className="screen-scoring">
       <div className="text">Finalizaste el juego!</div>
       <div className="message-scoring">Tu scoring fue de {scoring} puntos</div>
-      <img src="/static/img/dog-math.png"></img>
+      <img alt="Dog math" src="/static/img/dog-math.png"></img>
 
       <button onClick={e => nextStep(e, 3)} className="btn-next">
         <span>Volver a mis juegos</span>

@@ -10,7 +10,7 @@ export default ({
     <React.Fragment>
       <div className="welcome-bar">
         {!avatar && <RandomAvatar />}
-        { avatar && <img width="52px" src={avatar} /> }
+        { avatar && <img alt="avatar" width="52px" src={avatar} /> }
         <div className="info">
           <div className="nickname">{nickname}</div>
           <div className="level">Nivel {level}</div>

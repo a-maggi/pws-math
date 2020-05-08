@@ -1,13 +1,8 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 
-const Main = ({ children, extraPadded }) => (
+const Main = ({ children }) => (
   <main className="Main">
     {children}
-
-   <style jsx>{`
-   
-   `}</style>
   </main>
 );
 

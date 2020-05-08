@@ -1,0 +1,23 @@
+
+.game-fastcard {
+  .ok-card {
+    animation-name: ok-animation-end;
+    background-color: #3fe842;
+  }
+  .card-answers{
+    padding: 20px 0 0;
+  }
+  .timer {
+    
+  }
+
+}
+
+@keyframes ok-animation-end {
+  0% {
+    background-color: inherit;
+  }
+  100% {
+    background-color: #3fe842;
+  }
+} 

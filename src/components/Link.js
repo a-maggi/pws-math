@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import React from "react";
-import { BrowserRouter as Router,Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default ({
   route = '#',
@@ -8,7 +8,6 @@ export default ({
   children,
   className
 }) => {
-  const isExternal = /^https?/.test(route);
   let link = (
     <span className={cn(className)}>
       <span>{children}</span>

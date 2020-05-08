@@ -18,30 +18,6 @@ import LastPageIcon from "@material-ui/icons/LastPage";
 import Rating from "@material-ui/lab/Rating";
 import Avatar from "@material-ui/core/Avatar";
 
-const StyledTableContainer = withStyles(theme => ({
-  root: {
-    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-    borderRadius: 5,
-    border: 0,
-    color: "white",
-    padding: "0 10px",
-    boxShadow: "1px 3px 5px 2px rgb(34,193,195)" /*rgba(255, 105, 135, 0.3);*/
-  }
-}))(TableContainer);
-
-// const TableCell = withStyles(theme => ({
-//   head: {
-//     backgroundColor: "linear-gradient(#e66465, #9198e5)", //theme.palette.common.black,
-//     color: theme.palette.common.white,
-//     fontSize: 16,
-//     fontWeight: "bold"
-//   },
-//   body: {
-//     fontSize: 14,
-//     colSpan: 6
-//   }
-// }))(TableCell);
-
 function TablePaginationActions({ count, page, rowsPerPage, onChangePage }) {
   const theme = useTheme();
   // const { count, page, rowsPerPage, onChangePage } = props;

@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import Equation from "./Equation";
+import NumberCard from "./NumberCard";
 import ScreenLoading from "../../util/screenLoading";
 
 import useStep from '../../hooks/useStep';
@@ -30,38 +30,24 @@ export default () => {
   const [tried, setTried] = useState(0);
 
 
-  const equation = [
-    "2 x ? = 8",
-    "14 / ? = 7",
-    "2 x ? x 2 = 16",
-    "10 - ? = 5",
-    "5 + ? = 50",
-    "14 - ? = 9",
-    "5 + ? = 8",
-    "3 x ? - 5 = 13",
-    "5 x ? = 25",
-    "49 / ? = 7",
+  const sequences = [
+    "1, 4, 7, 10, 13, 16, 19, 22, __",
+    "1, 2, 3, 5, 8, 13, __, 34, 55",
+    "1, 2, 4, __, 16, 32, 64, 128, 256",
   ];
   const possAns = [
-    ["5", "10", "4", "2"],
-    ["14", "7", "2", "1"],
-    ["2", "4", "8", "3"],
-    ["5", "3", "2", "10"],
-    ["10", "35", "45", "25"],
-    ["3", "2", "5", "7"],
-    ["3", "5", "2", "10"],
-    ["5", "4", "6", "2"],
-    ["10", "8", "5", "3"],
-    ["7", "14", "21", "10"],
+    ["21", "22", "23", "24", "25", "26", "27", "28"],
+    ["11", "13", "15", "16", "18", "20", "21", "24"],
+    ["2", "5", "8", "12", "17", "22", "48", "96"],
   ];
-  const answers = ["4", "2", "4", "5", "45", "5", "3", "6", "5", "7"];
+  const answers = ["25", "21", "8"];
 
   useEffect(() => {
     setRandQuestion(randomNumber());
   }, [prevArr]);
   
   useEffect(() => {
-    if( question  > 10 ) setStep(99) // Voy a scoring
+    if( question  > 3 ) setStep(99) // Voy a scoring
   }, [question]);
 
   
@@ -78,18 +64,18 @@ export default () => {
   }
 
   let randomNumber = () => {
-    if (equation.length === used.length) return false;
-    let values = equation.filter(x => !used.includes(x)).concat(used.filter(x => !equation.includes(x)));
+    if (sequences.length === used.length) return false;
+    let values = sequences.filter(x => !used.includes(x)).concat(used.filter(x => !sequences.includes(x)));
     let random = Math.floor(Math.random() * values.length);
     let randomN = values[random]
-    return equation.indexOf(randomN);
+    return sequences.indexOf(randomN);
   }
 
 
   let selectCard = (card, answer, index) => {
     if (card === answer || tried > 1) {
       const temp = [...used];
-      temp.push(equation[index]);
+      temp.push(sequences[index]);
       setUsed(temp);
       setQuestion(question + 1);
       setIsClicked(false);
@@ -114,17 +100,17 @@ export default () => {
   if (question <= 10) {
     return (
       <section> 
-        <div className="text">Problema {question}/{equation.length}</div>
+        <div className="text">Problema {question}/{sequences.length}</div>
 
         <div className="card-panel">
           <div id="question">
-            <p id="equation">{equation[randQuestion]}</p>
+            <p id="equation">{sequences[randQuestion]}</p>
           </div>
           <div className="subtext">Completa la ecuación, seleccionando una card</div>
           <div className="cards-answer">
 
             {!isNaN(randQuestion) && possAns[randQuestion] && possAns[randQuestion].map((item) => (
-              <Equation
+              <NumberCard
                 possAns={item}
                 answer={answers[randQuestion]}
                 index={randQuestion}

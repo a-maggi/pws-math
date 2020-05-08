@@ -8,14 +8,15 @@ import StepScoring from './steps/stepScoring';
 
 import CompleteEquation from './games/completeEquation';
 import CountFast from './games/countFast';
+import NumberPattern from './games/numberPattern';
 
 
 import WelcomeBar from "components/WelcomeBar";
 
 export default () => {
 
-  const { step, setStep } = useStep(); // Our data and methods
-  const { nickname, avatar, setNickname, setAvatar } = useUserData(); // Our data and methods
+  const { step } = useStep(); // Our data and methods
+  const { nickname, avatar, level } = useUserData(); // Our data and methods
 
   let renderStep = () => {
     switch (step) {
@@ -29,6 +30,8 @@ export default () => {
         return <CompleteEquation />
       case 7:
         return <CountFast />
+      case 8:
+        return <NumberPattern />
       case 99:
         return <StepScoring />
       default:
@@ -36,21 +39,13 @@ export default () => {
     }
   }
 
-  let renderUserbar = () => (
-    <section>
-    </section>
-  )
-
   return (
     <section className="game-box">
       <div className="container">
-        {nickname && step > 2 && <WelcomeBar nickname={nickname} avatar={avatar}></WelcomeBar>}
+        {nickname && step > 2 && <WelcomeBar nickname={nickname} avatar={avatar} level={level}></WelcomeBar>}
         {renderStep()}
-        <img src="/static/img/dog.png" className="dog"></img>
+        <img alt="dog" src="/static/img/dog.png" className="dog"></img>
       </div>
-      <style jsx>{`
-        
-      `}</style>
     </section>
   );
 };

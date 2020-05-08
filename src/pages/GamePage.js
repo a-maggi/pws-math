@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import Layout from "components/Layout";
-import WelcomeBar from "components/WelcomeBar";
-import Link from "components/Link";
 import Game from "components/Game";
 
-const GamePage = ({ }) => {
+const GamePage = () => {
   return (
-    <Layout isAuth={true}>
+    <Layout>
       <div className="container">
         <div className="boxContainer">
-          <Game></Game>
+          <Game/>
         </div>
       </div>
 

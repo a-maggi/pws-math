@@ -3,17 +3,15 @@ import moment from 'moment';
 
 const Timer = () => {
   const [seconds, setSeconds] = useState(0);
-  const gameFinished = false;
 
   useEffect(() => {
-    let interval;
-    interval = setInterval(() => {
+    setInterval(() => {
       setSeconds(seconds => seconds + 1)
     }, 1000)
   }, []);
 
   return (
-    <div>{_formatCount(seconds)}</div>
+    <div className="subtext">{_formatCount(seconds)}</div>
   )
 };
 

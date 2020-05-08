@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import ScreenLoading from "../../util/screenLoading";
 
@@ -11,12 +11,12 @@ import Card from './NumberCard';
 
 import { orderNumbers, shuffleNumbers } from './util/numbers';
 
-import styles from './style.scss';
+import './style.scss';
 
 export default () => {
 
 
-  const { step, setStep } = useStep(); // Our data and methods
+  const { setStep } = useStep(); // Our data and methods
   const { scoring, setScoring } = useUserData(); // Our data and methods
 
   const [lowest, setLowest] = useState([]);
@@ -25,22 +25,19 @@ export default () => {
   const [numbers, setNumbers] = useState([]);
 
 
-  let numbersArray = [];
-
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false)
     }, 3000)
     let arrRandom = orderNumbers(7);
+    arrRandom = shuffleNumbers(arrRandom);
     setNumbers(arrRandom);
     setLowest(Math.min.apply(Math, arrRandom));
-    console.log("mas bajo es " + lowest)
   }, []);
 
 
 
   useEffect(() => {
-    console.log("nuevo mas bajo es " + lowest)
     if (lowest == Math.max.apply(Math, numbers) + 1)
       setStep(99) // Voy a scoring
   }, [lowest]);
@@ -61,7 +58,7 @@ export default () => {
   if (isLoading) return <ScreenLoading />
 
   return (
-    <section>
+    <section className="game-fastcard">
       <div className="text">¿Cuán rápido podes contar?</div>
 
       <div className="card-panel">
