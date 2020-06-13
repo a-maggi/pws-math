@@ -9,11 +9,10 @@ const PodiumCard = ({
   positionImg,
   positionDescription,
   student,
-  cardMarginTop,
 }) => {
-  if (!student) student = { name: "", level: "", subject: "", avatar: "" };
+  if (!student) student = { name: "", level: "", avatar: "" };
 
-  const { name, level, subject, avatar } = student;
+  const { name, level, avatar } = student;
   return (
     <Fragment>
       <Card className={`podium-card`}>
@@ -29,14 +28,6 @@ const PodiumCard = ({
           <Avatar alt="No Data" src={avatar} className="avatar-img" />
           <CardContent>
             <Avatar alt="No Data" src={positionImg} className="medal-img" />
-            {/* <Typography
-              gutterBottom
-              variant="h6"
-              component="h2"
-              className="position-number"
-            >
-              { actualPosition }
-            </Typography> */}
             <Typography
               gutterBottom
               variant="h6"
@@ -51,7 +42,7 @@ const PodiumCard = ({
               component="h2"
               className="card-description"
             >
-              {name} a obtenido la {positionDescription} en {subject} nivel{" "}
+              {name} a obtenido la {positionDescription} en nivel{" "}
               {level}
             </Typography>
           </CardContent>

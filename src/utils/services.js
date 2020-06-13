@@ -17,6 +17,25 @@ export const postLoginNick = async (nickname) => {
   }
 };
 
+export const postRating = async (rating) => {
+  try {
+    return await fetch(`${api_server}/api/rating`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        user: rating.user,
+        rating: rating.rating,
+        level: rating.level
+      })
+    });
+  } catch (err) {
+    return Promise.reject(err);
+  }
+};
+
 /* Ejemplo con GET (despues borrar!) */
 export async function getUsers(params) {
   try {

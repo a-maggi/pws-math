@@ -23,8 +23,8 @@ const LeaderBoard = () => {
   const [subject, setSubject] = useState("TODOS");
   const [level, setLevel] = useState("TODOS");
 
-  function createData(position, name, score, subject, level, date, avatar) {
-    return { position, name, score, subject, level, date, avatar };
+  function createData(position, name, score, level, date, avatar) {
+    return { position, name, score, level, date, avatar };
   }
   const subjects = [
     {
@@ -62,7 +62,6 @@ const LeaderBoard = () => {
       1,
       "Juan",
       305,
-      "Matematica",
       "Facil",
       "10/04/2020",
       "/static/img/icon-users/icons8-jake.png"
@@ -71,7 +70,6 @@ const LeaderBoard = () => {
       2,
       "Pepe",
       452,
-      "Lengua",
       "Dificil",
       "11/04/2020",
       "/static/img/icon-users/icons8-homer-simpson.png"
@@ -80,7 +78,6 @@ const LeaderBoard = () => {
       3,
       "Claudia",
       262,
-      "Matematica",
       "Medio",
       "01/01/2020",
       "/static/img/icon-users/icons8-homer-simpson.png"
@@ -89,7 +86,6 @@ const LeaderBoard = () => {
       4,
       "ruperto NombreLargo",
       159,
-      "Lengua",
       "Facil",
       "10/04/2019",
       "/static/img/icon-users/icons8-iron-man.png"
@@ -98,7 +94,6 @@ const LeaderBoard = () => {
       5,
       "Yolanda",
       356,
-      "Matematica",
       "Facil",
       "05/12/2020",
       "/static/img/icon-users/icons8-iron-man.png"
@@ -107,7 +102,6 @@ const LeaderBoard = () => {
       6,
       "Brian",
       408,
-      "Matematica",
       "Dificil",
       "02/02/2020",
       "/static/img/icon-users/icons8-super-mario.png"
@@ -116,7 +110,6 @@ const LeaderBoard = () => {
       7,
       "Maria",
       237,
-      "Lengua",
       "Facil",
       "10/04/2020",
       "/static/img/icon-users/icons8-super-mario.png"
@@ -125,7 +118,6 @@ const LeaderBoard = () => {
       8,
       "Pilar",
       375,
-      "Matematica",
       "Medio",
       "19/04/2020",
       "/static/img/icon-users/icons8-jake.png"
@@ -134,7 +126,6 @@ const LeaderBoard = () => {
       9,
       "Manolito",
       518,
-      "Lengua",
       "Medio",
       "07/01/2020",
       "/static/img/icon-users/icons8-iron-man.png"
@@ -143,7 +134,6 @@ const LeaderBoard = () => {
       10,
       "Alberto",
       500,
-      "Lengua",
       "Dificil",
       "01/04/2020",
       "/static/img/icon-users/icons8-jake.png"
@@ -152,7 +142,6 @@ const LeaderBoard = () => {
       11,
       "Carlos",
       199,
-      "Matematica",
       "Dificil",
       "19/02/2020",
       "/static/img/icon-users/icons8-super-mario.png"
@@ -161,7 +150,6 @@ const LeaderBoard = () => {
       12,
       "Cristina",
       360,
-      "Lengua",
       "Facil",
       "25/12/2020",
       "/static/img/icon-users/icons8-homer-simpson.png"
@@ -170,7 +158,6 @@ const LeaderBoard = () => {
       13,
       "Eva",
       437,
-      "Lengua",
       "Medio",
       "02/02/2020",
       "/static/img/icon-users/icons8-jake.png"
@@ -178,30 +165,17 @@ const LeaderBoard = () => {
   ].sort((a, b) => (a.position < b.position ? -1 : 1));
 
   useEffect(() => {
-    if (level === "TODOS" || subject === "TODOS") {
-      if (level === "TODOS" && subject !== "TODOS") {
-        setRows(
-          rows.filter(r => r.subject.toUpperCase() === subject.toUpperCase())
-        );
-      } else if (level !== "TODOS") {
-        setRows(
-          rows.filter(r => r.level.toUpperCase() === level.toUpperCase())
-        );
-      } else {
-        //si no se filtro nada
-        setRows(rows);
-      }
-    } else {
+    if (level === "TODOS") {
+      //si no se filtro nada
+      setRows(rows);
+    }
+    else if (level !== "TODOS") {
       setRows(
-        rows.filter(
-          r =>
-            r.level.toUpperCase() === level.toUpperCase() &&
-            r.subject.toUpperCase() === subject.toUpperCase()
-        )
+        rows.filter(r => r.level.toUpperCase() === level.toUpperCase())
       );
     }
     // eslint-disable-next-line
-  }, [level, subject]);
+  }, [level]);
 
   return (
     <Fragment>
@@ -234,7 +208,7 @@ const LeaderBoard = () => {
         ) : null}
       </CardContent>
       <TableWithPagination
-        rows={rowsFiltered.slice(3, rowsFiltered.length )}
+        rows={rowsFiltered.slice(3, rowsFiltered.length)}
       />
     </Fragment>
   );

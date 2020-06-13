@@ -150,9 +150,6 @@ const TableWithPagination = ({ rows }) => {
                 PUNTAJE
               </TableCell>
               <TableCell align="center" className="table-cell">
-                MATERIA
-              </TableCell>
-              <TableCell align="center" className="table-cell">
                 NIVEL
               </TableCell>
               <TableCell align="center" className="table-cell">
@@ -191,9 +188,6 @@ const TableWithPagination = ({ rows }) => {
                     readOnly
                   />
                   ({row.score})
-                </TableCell>
-                <TableCell align="center" className="table-cell">
-                  {row.subject}
                 </TableCell>
                 <TableCell align="center" className="table-cell">
                   {row.level}

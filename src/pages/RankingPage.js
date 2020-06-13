@@ -1,16 +1,35 @@
 import React from "react";
-// import useUserData from "../hooks/useUserData";
+
+import { postRating } from 'utils/services';
+
 import LeaderBoard from "../components/ranking/Leaderboard";
 
 import Layout from "components/Layout";
 
 const RankingPage = () => {
-  // const { nickname, updateNickname } = useUserData(); // Our data and methods
+  const { nickname, updateNickname } = useUserData(); // Our data and methods
 
-  //
-  // if (!nickname) {
-  //     return <Redirect to='/puntajes' />
-  // }
+
+  React.useEffect(() => {
+
+    let data = {
+      user: uuid,
+      rating: rating,
+      level: level
+    }
+    postRating(data)
+      .then((response) => {
+        if (response.status >= 300)
+          throw new Error(response);
+        return response.json();
+      })
+      .then((response) => {
+       
+      })
+      .catch()
+
+
+  }, []);
 
   return (
     <Layout isAuth={true}>
@@ -24,7 +43,7 @@ const RankingPage = () => {
           font-weight: 600;
           margin: 0 0 4rem 0;
           text-align: center;
-          color: white;
+          color: #000;
         }
         h1 span {
           font-weight: 400;

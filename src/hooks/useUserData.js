@@ -18,11 +18,21 @@ const useUserData = () => {
     }));
   }; // Our methods to update the state
 
+  const updateUuid = name => {
+    setState(prevState => ({
+      ...prevState,
+      uuid: name
+    }));
+  }; // Our methods to update the state
+
   // Now we return only the relevant part of the state for the component and the method to update it
   return {
     nickname: state.nickname,
+    level: state.level,
+    uuid: state.uuid,
     updateNickname,
-    updateLevel
+    updateLevel,
+    updateUuid
   };
 };
 
