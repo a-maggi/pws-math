@@ -1,14 +1,35 @@
 import React from 'react'
 
+import { postRating } from 'utils/services';
 import useStep from '../hooks/useStep';
 import useUserData from '../hooks/useUserData';
 
 export default () => {
 
-
   const { setStep } = useStep(); // Our data and methods
-  const { scoring, setScoring } = useUserData(); // Our data and methods
+  const { scoring, level, uuid, setScoring } = useUserData(); // Our data and methods
   
+  React.useEffect(() => {
+
+    let data = {
+      user: uuid,
+      rating: scoring,
+      level: level
+    }
+    postRating(data)
+      .then((response) => {
+        if (response.status >= 300)
+          throw new Error(response);
+        return response.json();
+      })
+      .then((response) => {
+       
+      })
+      .catch()
+
+
+  }, []);
+
 
   const nextStep = (e, step) => {
     e.preventDefault();

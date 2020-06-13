@@ -1,35 +1,12 @@
 import React from "react";
 
-import { postRating } from 'utils/services';
-
 import LeaderBoard from "../components/ranking/Leaderboard";
 
 import Layout from "components/Layout";
 
 const RankingPage = () => {
-  const { nickname, updateNickname } = useUserData(); // Our data and methods
+  //const { nickname, updateNickname } = useUserData(); // Our data and methods
 
-
-  React.useEffect(() => {
-
-    let data = {
-      user: uuid,
-      rating: rating,
-      level: level
-    }
-    postRating(data)
-      .then((response) => {
-        if (response.status >= 300)
-          throw new Error(response);
-        return response.json();
-      })
-      .then((response) => {
-       
-      })
-      .catch()
-
-
-  }, []);
 
   return (
     <Layout isAuth={true}>
