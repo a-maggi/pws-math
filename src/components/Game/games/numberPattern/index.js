@@ -5,6 +5,8 @@ import ScreenLoading from "../../util/screenLoading";
 import useStep from '../../hooks/useStep';
 import useUserData from '../../hooks/useUserData';
 
+import { getGame } from '../../../../utils/services'
+
 import './style.scss';
 
 export default () => {
@@ -19,7 +21,7 @@ export default () => {
 
 
   const { setStep } = useStep(); // Our data and methods
-  const { scoring, setScoring } = useUserData(); // Our data and methods
+  const { scoring, setScoring, level } = useUserData(); // Our data and methods
 
   const [used, setUsed] = useState([]);
   const prevArr = usePrevious(used);
@@ -28,33 +30,30 @@ export default () => {
   const [question, setQuestion] = useState(1);
   const [randQuestion, setRandQuestion] = useState();
   const [tried, setTried] = useState(0);
-
-
-  const sequences = [
-    "1, 4, 7, 10, 13, 16, 19, 22, __",
-    "1, 2, 3, 5, 8, 13, __, 34, 55",
-    "1, 2, 4, __, 16, 32, 64, 128, 256",
-  ];
-  const possAns = [
-    ["21", "22", "23", "24", "25", "26", "27", "28"],
-    ["11", "13", "15", "16", "18", "20", "21", "24"],
-    ["2", "5", "8", "12", "17", "22", "48", "96"],
-  ];
-  const answers = ["25", "21", "8"];
+  const [sequences, setSequences] = useState([]);
+  const [possAns, setPossAns] = useState([]);
+  const [answers, setAnswers] = useState([]);
 
   useEffect(() => {
-    setRandQuestion(randomNumber());
+    setRandQuestion(randomNumber(sequences));
   }, [prevArr]);
-  
+
   useEffect(() => {
     if( question  > 3 ) setStep(99) // Voy a scoring
   }, [question]);
 
-  
+
   useEffect(() => {
-    setTimeout(() => {
+    console.log('Getting data for level: ', level)
+    getGame('numberPattern', level).then(data => {
+      const { sequences: sequencesData, possAnswer, answer } = data;
+      console.log('Data succesfully retrieved')
+      setSequences(sequencesData);
+      setPossAns(possAnswer);
+      setAnswers(answer);
+      setRandQuestion(randomNumber(sequencesData));
       setIsLoading(false)
-    }, 3000)
+    });
   }, []);
 
 
@@ -63,12 +62,12 @@ export default () => {
     setScoring(newScore);
   }
 
-  let randomNumber = () => {
-    if (sequences.length === used.length) return false;
-    let values = sequences.filter(x => !used.includes(x)).concat(used.filter(x => !sequences.includes(x)));
+  let randomNumber = (sequencesData) => {
+    if (sequencesData.length === used.length) return false;
+    let values = sequencesData.filter(x => !used.includes(x)).concat(used.filter(x => !sequencesData.includes(x)));
     let random = Math.floor(Math.random() * values.length);
     let randomN = values[random]
-    return sequences.indexOf(randomN);
+    return sequencesData.indexOf(randomN);
   }
 
 
@@ -99,7 +98,7 @@ export default () => {
 
   if (question <= 10) {
     return (
-      <section> 
+      <section>
         <div className="text">Problema {question}/{sequences.length}</div>
 
         <div className="card-panel">

@@ -8,6 +8,7 @@ import useUserData from '../../hooks/useUserData';
 import Timer from './Timer';
 import Card from './NumberCard';
 
+import { getGame } from '../../../../utils/services'
 
 import { orderNumbers, shuffleNumbers } from './util/numbers';
 
@@ -17,28 +18,31 @@ export default () => {
 
 
   const { setStep } = useStep(); // Our data and methods
-  const { scoring, setScoring } = useUserData(); // Our data and methods
+  const { scoring, setScoring, level } = useUserData(); // Our data and methods
 
-  const [lowest, setLowest] = useState([]);
+  const [lowest, setLowest] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [numbers, setNumbers] = useState([]);
+  const [nonUsed, setNonUsed] = useState([]);
 
 
   useEffect(() => {
-    setTimeout(() => {
+    console.log('Getting data for level: ', level)
+    getGame('countFast', level).then(data => {
+      const { numbers } = data
+      console.log('Data succesfully retrieved')
+      setNumbers(numbers);
+      setNonUsed([...numbers]);
+      setLowest(Math.min.apply(Math, numbers));
       setIsLoading(false)
-    }, 3000)
-    let arrRandom = orderNumbers(7);
-    arrRandom = shuffleNumbers(arrRandom);
-    setNumbers(arrRandom);
-    setLowest(Math.min.apply(Math, arrRandom));
+    });
   }, []);
 
 
 
   useEffect(() => {
-    if (lowest == Math.max.apply(Math, numbers) + 1)
+    if (!isFinite(lowest))
       setStep(99) // Voy a scoring
   }, [lowest]);
 
@@ -51,7 +55,10 @@ export default () => {
 
 
   let selectCard = (number) => {
-    setLowest(number+1);
+    const numberIndex = nonUsed.indexOf(number);
+    nonUsed.splice(numberIndex, 1);
+    const lowestNumber = Math.min.apply(Math, nonUsed);
+    setLowest(lowestNumber);
     setIsClicked(false);
   }
 

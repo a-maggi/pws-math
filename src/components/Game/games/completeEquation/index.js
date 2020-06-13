@@ -5,6 +5,8 @@ import ScreenLoading from "../../util/screenLoading";
 import useStep from '../../hooks/useStep';
 import useUserData from '../../hooks/useUserData';
 
+import { getGame } from '../../../../utils/services'
+
 import './style.scss';
 
 export default () => {
@@ -19,7 +21,7 @@ export default () => {
 
 
   const { setStep } = useStep(); // Our data and methods
-  const { scoring, setScoring } = useUserData(); // Our data and methods
+  const { scoring, setScoring, level } = useUserData(); // Our data and methods
 
   const [used, setUsed] = useState([]);
   const prevArr = usePrevious(used);
@@ -28,47 +30,30 @@ export default () => {
   const [question, setQuestion] = useState(1);
   const [randQuestion, setRandQuestion] = useState();
   const [tried, setTried] = useState(0);
-
-
-  const equation = [
-    "2 x ? = 8",
-    "14 / ? = 7",
-    "2 x ? x 2 = 16",
-    "10 - ? = 5",
-    "5 + ? = 50",
-    "14 - ? = 9",
-    "5 + ? = 8",
-    "3 x ? - 5 = 13",
-    "5 x ? = 25",
-    "49 / ? = 7",
-  ];
-  const possAns = [
-    ["5", "10", "4", "2"],
-    ["14", "7", "2", "1"],
-    ["2", "4", "8", "3"],
-    ["5", "3", "2", "10"],
-    ["10", "35", "45", "25"],
-    ["3", "2", "5", "7"],
-    ["3", "5", "2", "10"],
-    ["5", "4", "6", "2"],
-    ["10", "8", "5", "3"],
-    ["7", "14", "21", "10"],
-  ];
-  const answers = ["4", "2", "4", "5", "45", "5", "3", "6", "5", "7"];
+  const [equation, setEquation] = useState([])
+  const [possAns, setPossAns] = useState([])
+  const [answers, setAnswers] = useState([])
 
   useEffect(() => {
-    setRandQuestion(randomNumber());
+    setRandQuestion(randomNumber(equation));
   }, [prevArr]);
-  
+
   useEffect(() => {
     if( question  > 10 ) setStep(99) // Voy a scoring
   }, [question]);
 
-  
+
   useEffect(() => {
-    setTimeout(() => {
+    console.log('Getting data for level: ', level)
+    getGame('equationGame', level).then(data => {
+      const { equation: equationData, possAnswer, answer } = data;
+      console.log('Data succesfully retrieved')
+      setEquation(equationData);
+      setPossAns(possAnswer);
+      setAnswers(answer);
+      setRandQuestion(randomNumber(equationData));
       setIsLoading(false)
-    }, 3000)
+    });
   }, []);
 
 
@@ -77,12 +62,12 @@ export default () => {
     setScoring(newScore);
   }
 
-  let randomNumber = () => {
-    if (equation.length === used.length) return false;
-    let values = equation.filter(x => !used.includes(x)).concat(used.filter(x => !equation.includes(x)));
+  let randomNumber = (equations) => {
+    if (equations.length === used.length) return false;
+    let values = equations.filter(x => !used.includes(x)).concat(used.filter(x => !equations.includes(x)));
     let random = Math.floor(Math.random() * values.length);
     let randomN = values[random]
-    return equation.indexOf(randomN);
+    return equations.indexOf(randomN);
   }
 
 
@@ -113,7 +98,7 @@ export default () => {
 
   if (question <= 10) {
     return (
-      <section> 
+      <section>
         <div className="text">Problema {question}/{equation.length}</div>
 
         <div className="card-panel">
