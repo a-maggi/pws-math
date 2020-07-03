@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
-import { postLoginNick } from 'utils/services';
+import { postUser } from 'utils/services';
 
 import useUserData from '../hooks/useUserData';
 import useStep from '../hooks/useStep';
 
 export default () => {
 
-  const { nickname, avatar, setUuid, setNickname, setAvatar } = useUserData(); // Our data and methods
+  const { nickname, avatar, setUuid, uuid, setNickname, setAvatar } = useUserData(); // Our data and methods
   const { setStep } = useStep(); // Our data and methods
   const [error, updateError] = useState(false);
   const [errorMessage, updateErrorMessage] = useState('');
@@ -22,6 +22,14 @@ export default () => {
 
   const nicknameInput = React.createRef();
 
+  React.useEffect(() => {
+
+    setAvatar(avatares[Math.floor(Math.random() * avatares.length)]);
+
+
+  }, []);
+
+
   // Cuando el usuario quiere iniciar sesión
   const onSubmit = e => {
     e.preventDefault();
@@ -32,24 +40,29 @@ export default () => {
       return;
     }
 
-    postLoginNick(nicknameInput.current.value)
+    let data = {
+      nick: nicknameInput.current.value,
+      avatar: avatar
+    }
+
+    postUser(data)
       .then((response) => {
         if (response.status >= 300)
           throw new Error(response);
         return response.json();
       })
-      .then( (response) => {
+      .then((response) => {
         updateError(false);
         setUuid(response._id);
         setNickname(response.nick)
-        setAvatar(avatares[Math.floor(Math.random() * avatares.length)]);
         setTimeout(() => {
           setStep(2);
         }, 5000);
       })
-      .catch( (err) => {
+      .catch((err) => {
         updateError(true);
       })
+
   }
 
   const setForm = () => (

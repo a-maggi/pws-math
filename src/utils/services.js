@@ -6,7 +6,7 @@ const difficultyByLevel = {
   'Avanzado': 'hard',
 };
 
-export const postLoginNick = async (nickname) => {
+export const postUser = async (data) => {
   try {
     return await fetch(`${api_server}/api/user`, {
       method: "POST",
@@ -14,8 +14,23 @@ export const postLoginNick = async (nickname) => {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
+      body: JSON.stringify(data)
+    });
+  } catch (err) {
+    return Promise.reject(err);
+  }
+};
+
+export const putAvatar = async (username, avatar) => {
+  try {
+    return await fetch(`${api_server}/api/user/${username}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
-        nick: nickname
+        avatar: avatar
       })
     });
   } catch (err) {
