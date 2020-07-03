@@ -1,12 +1,14 @@
 import React from "react";
 
 import LeaderBoard from "../components/ranking/Leaderboard";
-
 import Layout from "components/Layout";
 
 const RankingPage = () => {
   //const { nickname, updateNickname } = useUserData(); // Our data and methods
 
+  React.useEffect(() => {
+
+  }, []);
 
   return (
     <Layout isAuth={true}>

@@ -3,7 +3,7 @@ let api_server = process.env.REACT_APP_API_SERVER;
 const difficultyByLevel = {
   'Principiante': 'easy',
   'Intermedio': 'medium',
-  'Avanzado': 'hard',
+  'Experto': 'hard',
 };
 
 export const postUser = async (data) => {
@@ -21,18 +21,15 @@ export const postUser = async (data) => {
   }
 };
 
-export const putAvatar = async (username, avatar) => {
+export const getRating = async () => {
   try {
-    return await fetch(`${api_server}/api/user/${username}`, {
-      method: "PUT",
+    const res = await fetch(`${api_server}/api/rating`, {
       headers: {
-        Accept: "application/json",
+        accept: "application/json",
         "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        avatar: avatar
-      })
+      }
     });
+    return res.json();
   } catch (err) {
     return Promise.reject(err);
   }

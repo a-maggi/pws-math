@@ -30,6 +30,7 @@ export default () => {
   const [question, setQuestion] = useState(1);
   const [randQuestion, setRandQuestion] = useState();
   const [tried, setTried] = useState(0);
+
   const [equation, setEquation] = useState([])
   const [possAns, setPossAns] = useState([])
   const [answers, setAnswers] = useState([])
@@ -39,15 +40,13 @@ export default () => {
   }, [prevArr]);
 
   useEffect(() => {
-    if( question  > 10 ) setStep(99) // Voy a scoring
+    if( question  > 5 ) setStep(99) // Voy a scoring
   }, [question]);
 
 
   useEffect(() => {
-    console.log('Getting data for level: ', level)
     getGame('equationGame', level).then(data => {
       const { equation: equationData, possAnswer, answer } = data;
-      console.log('Data succesfully retrieved')
       setEquation(equationData);
       setPossAns(possAnswer);
       setAnswers(answer);
@@ -81,12 +80,12 @@ export default () => {
       setTried(0);
     }
     if (card === answer) {
-      defineScore(10);
+      defineScore(20);
       return true;
     }
 
     if (tried > 1) {
-      defineScore(-10);
+      defineScore(-20);
       return true;
     }
     setIsClicked(false);

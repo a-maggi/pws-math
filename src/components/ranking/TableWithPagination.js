@@ -158,11 +158,13 @@ const TableWithPagination = ({ rows }) => {
             </TableRow>
           </TableHead>
           <TableBody>
+          {rows.length == 0 ? (<p>Sin resultados</p>): null}
+
             {(rowsPerPage > 0
               ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : rows
             ).map((row, index) => (
-              <TableRow key={row.position}>
+              <TableRow key={index}>
                 <TableCell
                   align="right"
                   component="th"
@@ -172,22 +174,22 @@ const TableWithPagination = ({ rows }) => {
                   {index + 4}
                 </TableCell>
                 <TableCell align="right" className="table-cell">
-                  <Avatar alt="No Data" src={row.avatar}>
-                    {row.name.charAt(0).toUpperCase()}
+                  <Avatar alt="No Data" src={row.user.avatar}>
+                    {row.user.nick.charAt(0).toUpperCase()}
                   </Avatar>
                 </TableCell>
                 <TableCell align="left" className="column-name table-cell">
-                  {row.name}
+                  {row.user.nick}
                 </TableCell>
                 <TableCell className="column-rating table-cell">
                   <Rating
                     align="left"
                     name="half-rating-read size-large"
-                    defaultValue={row.score / 100}
+                    defaultValue={row.rating / 100}
                     precision={0.01}
                     readOnly
                   />
-                  ({row.score})
+                  ({row.rating})
                 </TableCell>
                 <TableCell align="center" className="table-cell">
                   {row.level}

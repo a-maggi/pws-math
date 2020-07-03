@@ -16,16 +16,7 @@ export default () => {
       rating: scoring,
       level: level
     }
-    postRating(data)
-      .then((response) => {
-        if (response.status >= 300)
-          throw new Error(response);
-        return response.json();
-      })
-      .then((response) => {
-       
-      })
-      .catch()
+    postRating(data);
 
 
   }, []);
