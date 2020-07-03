@@ -187,7 +187,7 @@ const TableWithPagination = ({ rows }) => {
                   <Rating
                     align="left"
                     name="half-rating-read size-large"
-                    defaultValue={row.rating / 20}
+                    value={row.rating / 20}
                     readOnly
                   />
                   ({row.rating})
