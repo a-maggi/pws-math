@@ -177,7 +177,7 @@ const TableWithPagination = ({ rows }) => {
                 </TableCell>
                 <TableCell align="right" className="table-cell">
                   <Avatar alt="No Data" src={row.user.avatar}>
-                    {row.user.nick.charAt(0).toUpperCase()}
+                    {row.user && row.user.nick && row.user.nick.charAt(0).toUpperCase()}
                   </Avatar>
                 </TableCell>
                 <TableCell align="left" className="column-name table-cell">
