@@ -39,7 +39,7 @@ export default () => {
   }, [prevArr]);
 
   useEffect(() => {
-    if( question  > 10 ) setStep(99) // Voy a scoring
+    if( question  > 5 ) setStep(99) // Voy a scoring
   }, [question]);
 
 

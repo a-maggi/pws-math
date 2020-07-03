@@ -3,7 +3,7 @@ let api_server = process.env.REACT_APP_API_SERVER;
 const difficultyByLevel = {
   'Principiante': 'easy',
   'Intermedio': 'medium',
-  'Avanzado': 'hard',
+  'Experto': 'hard',
 };
 
 export const postUser = async (data) => {

@@ -32,9 +32,10 @@ export default () => {
     getGame('countFast', level).then(data => {
       const { numbers } = data
       console.log('Data succesfully retrieved')
-      setNumbers(numbers);
-      setNonUsed([...numbers]);
-      setLowest(Math.min.apply(Math, numbers));
+      const shuffledNumbers = shuffleNumbers(numbers)
+      setNumbers(shuffledNumbers);
+      setNonUsed([...shuffledNumbers]);
+      setLowest(Math.min.apply(Math, shuffledNumbers));
       setIsLoading(false)
     });
   }, []);
