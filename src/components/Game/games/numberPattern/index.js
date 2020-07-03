@@ -3,7 +3,7 @@ import NumberCard from "./NumberCard";
 import ScreenLoading from "../../util/screenLoading";
 
 import useStep from '../../hooks/useStep';
-import useUserData from '../../hooks/useUserData';
+import useUserData from 'hooks/useUserData';
 
 import { getGame } from '../../../../utils/services'
 
@@ -81,12 +81,12 @@ export default () => {
       setTried(0);
     }
     if (card === answer) {
-      defineScore(10);
+      defineScore(30);
       return true;
     }
 
     if (tried > 1) {
-      defineScore(-10);
+      defineScore(-30);
       return true;
     }
     setIsClicked(false);

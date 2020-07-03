@@ -2,7 +2,7 @@ import React from 'react'
 
 import { postRating } from 'utils/services';
 import useStep from '../hooks/useStep';
-import useUserData from '../hooks/useUserData';
+import useUserData from 'hooks/useUserData';
 
 export default () => {
 

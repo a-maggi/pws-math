@@ -3,7 +3,7 @@ import Equation from "./Equation";
 import ScreenLoading from "../../util/screenLoading";
 
 import useStep from '../../hooks/useStep';
-import useUserData from '../../hooks/useUserData';
+import useUserData from 'hooks/useUserData';
 
 import { getGame } from '../../../../utils/services'
 

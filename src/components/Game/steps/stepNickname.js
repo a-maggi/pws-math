@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { postUser } from 'utils/services';
 
-import useUserData from '../hooks/useUserData';
+import useUserData from 'hooks/useUserData';
 import useStep from '../hooks/useStep';
 
 export default () => {
@@ -22,14 +22,6 @@ export default () => {
 
   const nicknameInput = React.createRef();
 
-  React.useEffect(() => {
-
-    setAvatar(avatares[Math.floor(Math.random() * avatares.length)]);
-
-
-  }, []);
-
-
   // Cuando el usuario quiere iniciar sesión
   const onSubmit = e => {
     e.preventDefault();
@@ -40,9 +32,10 @@ export default () => {
       return;
     }
 
+    let randomAvatar = avatares[Math.floor(Math.random() * avatares.length)];
     let data = {
       nick: nicknameInput.current.value,
-      avatar: avatar
+      avatar: randomAvatar
     }
 
     postUser(data)
@@ -55,9 +48,10 @@ export default () => {
         updateError(false);
         setUuid(response._id);
         setNickname(response.nick)
+        setAvatar(randomAvatar);
         setTimeout(() => {
           setStep(2);
-        }, 5000);
+        }, 1000);
       })
       .catch((err) => {
         updateError(true);

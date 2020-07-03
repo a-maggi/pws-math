@@ -4,35 +4,53 @@ import { Context } from "../Context";
 const useUserData = () => {
   const [state, setState] = useContext(Context); // Our values from Context
 
-  const updateLevel = name => {
+  const setLevel = data => {
     setState(prevState => ({
       ...prevState,
-      nickname: ""
+      level: data
     }));
   }; // Our methods to update the state
 
-  const updateNickname = name => {
+  const setNickname = data => {
     setState(prevState => ({
       ...prevState,
-      nickname: name
+      nickname: data
     }));
   }; // Our methods to update the state
 
-  const updateUuid = name => {
+  const setUuid = data => {
     setState(prevState => ({
       ...prevState,
-      uuid: name
+      uuid: data
+    }));
+  }; // Our methods to update the state
+
+  const setAvatar = data => {
+    setState(prevState => ({
+      ...prevState,
+      avatar: data
+    }));
+  }; // Our methods to update the state
+
+  const setScoring = data => {
+    setState(prevState => ({
+      ...prevState,
+      scoring: data
     }));
   }; // Our methods to update the state
 
   // Now we return only the relevant part of the state for the component and the method to update it
   return {
     nickname: state.nickname,
-    level: state.level,
     uuid: state.uuid,
-    updateNickname,
-    updateLevel,
-    updateUuid
+    level: state.level,
+    avatar: state.avatar,
+    scoring: state.scoring,
+    setNickname,
+    setLevel,
+    setUuid,
+    setAvatar,
+    setScoring
   };
 };
 

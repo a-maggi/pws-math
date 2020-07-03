@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import ScreenLoading from "../../util/screenLoading";
 
 import useStep from '../../hooks/useStep';
-import useUserData from '../../hooks/useUserData';
+import useUserData from 'hooks/useUserData';
 
 import Timer from './Timer';
 import Card from './NumberCard';

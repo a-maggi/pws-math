@@ -4,7 +4,9 @@ const Context = React.createContext([{}, () => {}]); // Our empty Context ready.
 
 const Provider = props => {
   const [state, setState] = useState({
-    nickname: ""
+    nickname: false,
+    level: false,
+    avatar: false,
   }); // Our context is a state hook ;)
   return <Context.Provider value={[state, setState]}>{props.children}</Context.Provider>;
 };
