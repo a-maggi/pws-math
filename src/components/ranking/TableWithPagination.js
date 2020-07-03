@@ -18,6 +18,8 @@ import LastPageIcon from "@material-ui/icons/LastPage";
 import Rating from "@material-ui/lab/Rating";
 import Avatar from "@material-ui/core/Avatar";
 
+import moment from 'moment';
+
 function TablePaginationActions({ count, page, rowsPerPage, onChangePage }) {
   const theme = useTheme();
   // const { count, page, rowsPerPage, onChangePage } = props;
@@ -185,8 +187,7 @@ const TableWithPagination = ({ rows }) => {
                   <Rating
                     align="left"
                     name="half-rating-read size-large"
-                    defaultValue={row.rating / 100}
-                    precision={0.01}
+                    defaultValue={row.rating / 20}
                     readOnly
                   />
                   ({row.rating})
@@ -195,7 +196,7 @@ const TableWithPagination = ({ rows }) => {
                   {row.level}
                 </TableCell>
                 <TableCell align="center" className="table-cell">
-                  {row.date}
+                  {moment(row.date).format("MM-DD hh:mm")} hs
                 </TableCell>
               </TableRow>
             ))}

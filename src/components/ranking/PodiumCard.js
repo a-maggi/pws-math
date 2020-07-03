@@ -43,7 +43,7 @@ const PodiumCard = ({
               className="card-description"
             >
               {user.nick} a obtenido la {positionDescription} en nivel{" "}
-              {user.level}
+              {level}
             </Typography>
           </CardContent>
         </CardActionArea>
